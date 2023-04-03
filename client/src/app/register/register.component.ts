@@ -19,7 +19,11 @@ export class RegisterComponent implements OnInit {
   register() {
     this.accontService.register(this.model).subscribe({
       next: () => this.cancel(),
-      error: error => console.log(error),
+      error: error => {
+        console.log(error)
+        alert(`add toaster! \nerror: ${error.error.title} \n${Object.entries(error.error.errors).map(entry => `${entry[0]}: ${entry[1]}`).join("\n")}`)
+
+      },
     })
   }
 

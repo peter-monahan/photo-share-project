@@ -33,3 +33,7 @@
     border-radius: 7px;
     width: 150px;
 }
+
+.dropdown-button {
+    cursor: pointer;
+}
