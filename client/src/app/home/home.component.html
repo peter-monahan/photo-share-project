@@ -1,0 +1,18 @@
+<div class="container mt-5">
+    <div class="inner-home" *ngIf="!registerMode">
+        <h1>Share Photos</h1>
+        <p class="lead">Share your photography! Sign up now.</p>
+        <div class="text-center">
+            <button class="btn btn-primary btn-lg me-2" (click)="registerToggle()">Register</button>
+            <button class="btn btn-primary btn-lg btn-info">Learn more</button>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="registerMode">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <app-register (cancelRegister)="cancelRegister($event)"></app-register>
+            </div>
+        </div>
+    </div>
+</div>
