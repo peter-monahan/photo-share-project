@@ -1,0 +1,14 @@
+<h4>Internal Server Error - error will not persist on refresh</h4>
+
+<ng-container *ngIf="error">
+  <h5 class="text-danger">Error: {{error.message}}</h5>
+
+  <p>Tips:</p>
+  <ol>
+    <li>Check Network tab</li>
+    <li>Check URL</li>
+    <li>Test in Postman</li>
+  </ol>
+  <h4>Stack Trace</h4>
+  <code class="mt-5" style="background-color: aliceblue;">{{error.details}}</code>
+</ng-container>
