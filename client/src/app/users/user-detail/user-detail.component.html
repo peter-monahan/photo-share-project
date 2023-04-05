@@ -1,1 +1,26 @@
-<p>user-detail works!</p>
+<div class="container" *ngIf="member">
+  <div class="row">
+    <div class="col-md-5">
+      <img src="{{member.profilePicUrl}}" alt="{{member.displayName}}" class="img-thumbnail">
+    </div>
+    <div class="col mt-4">
+      <div>
+        <strong>Bio:</strong>
+        <p class="bio-text">{{member.bio}}</p>
+      </div>
+    </div>
+  </div>
+    <div class="row mb-5 posts-container" *ngFor="let post of member.posts">
+      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
+      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
+      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
+      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
+      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
+      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
+      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
+      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
+
+
+
+    </div>
+</div>
