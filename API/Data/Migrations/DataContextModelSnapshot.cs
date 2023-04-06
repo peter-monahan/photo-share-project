@@ -114,6 +114,21 @@ namespace API.Data.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("AppUserAppUser", b =>
+                {
+                    b.Property<int>("IsFollowedById")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IsFollowingId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("IsFollowedById", "IsFollowingId");
+
+                    b.HasIndex("IsFollowingId");
+
+                    b.ToTable("AppUserAppUser");
+                });
+
             modelBuilder.Entity("API.Entities.Photo", b =>
                 {
                     b.HasOne("API.Entities.Post", "Post")
@@ -134,6 +149,21 @@ namespace API.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("AppUserAppUser", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("IsFollowedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API.Entities.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("IsFollowingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("API.Entities.AppUser", b =>

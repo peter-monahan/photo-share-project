@@ -25,7 +25,7 @@
             <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user">
                 <a  class="dropdown-toggle text-light text-decoration-none dropdown-button" (click)="toggleDropDown()">Welcome {{user.username | titlecase}}</a>
                 <div class="dropdown-list" *ngIf="showDropdown">
-                    <a class="dropdown-items">Edit Profile</a>
+                    <a class="dropdown-items" routerLink="/user/edit">Edit Profile</a>
                     <a class="dropdown-items" (click)="logout()">Logout</a>
                 </div>
             </div>
@@ -46,7 +46,11 @@
             </form>
         </div>
     </nav>
-    
+    <!---------------------------------WARNING FAKE NAVBAR BELOW!!!!------------------------------------------->
+    <!---------------------------------WARNING FAKE NAVBAR BELOW!!!!------------------------------------------->
+    <!---------------------------------WARNING FAKE NAVBAR BELOW!!!!------------------------------------------->
+    <!---------------------------------WARNING FAKE NAVBAR BELOW!!!!------------------------------------------->
+
     <nav class="navbar navbar-expand-md navbar-dark  bg-primary">
         <div class="container">
             <a class="navbar-brand" routerLink="/" routerLinkActive="active">Photo Share</a>

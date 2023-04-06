@@ -1,0 +1,39 @@
+/* app-modal {
+  display: none;
+} */
+
+.app-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  z-index: 1100;
+
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-modal-body {
+  padding: 5%;
+  background-color: white;
+  margin: 10%;
+  border-radius: 20px;
+  box-shadow: 7px 7px 3px rgba(0, 0, 0, 0.301);
+  width: min-content;
+}
+
+.app-modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  background-color: rgba(0, 0, 0, 0.308);
+
+  z-index: 1050;
+}

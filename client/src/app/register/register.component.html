@@ -1,18 +1,18 @@
-<form registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
+<form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
     <h2 class="text-center text-primary">Sign up</h2>
     <hr>
     <div class="mb-3">
         <input
             type="text"
             name="username"
-            class="form-control"
+            class="form-control mb-3"
             [(ngModel)]="model.username"
             placeholder="Username"
         >
         <div class="mb-3">
             <input
                 type="password"
-                class="form-control"
+                class="form-control mb-3"
                 name="password"
                 [(ngModel)]="model.password"
                 placeholder="Password"

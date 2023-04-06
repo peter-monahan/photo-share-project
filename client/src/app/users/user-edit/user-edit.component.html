@@ -1,0 +1,43 @@
+<div class="row justify-content-center" *ngIf="member">
+    <div class="col-8">
+        <div class="alert alert-info" *ngIf="editForm.dirty"><p>Any unsaved changes will be lost.</p></div>
+        <form #editForm="ngForm" id="editForm"  autocomplete="off" (ngSubmit)="saveEdit()" >   <!-- (ngSubmit)="save()" -->
+            <h2 class="text-center text-primary">Edit User</h2>
+            <hr>
+            <div class="mb-3">
+                <h5 class="mt-2">Display Name</h5>
+                <input
+                    type="text"
+                    name="displayName"
+                    class="form-control"
+                    [(ngModel)]="member.displayName"
+                    placeholder="Display Name"
+                >
+            </div>
+            <div class="mb-3">
+                <h5 class="mt-2">Profile Image</h5>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="profilePicUrl"
+                    [(ngModel)]="member.profilePicUrl"
+                    placeholder="Display Name"
+                    >
+            </div>
+            <div class="mb-3">
+                <h5 class="mt-2">Bio</h5>
+                <textarea
+                    class="form-control"
+                    name="bio"
+                    [(ngModel)]="member.bio"
+                    placeholder="Bio"
+                    rows="6"
+                    ></textarea>
+            </div>
+            <div class="text-center">
+                <button [disabled]="!editForm.dirty" class="btn btn-success me-2" type="submit">Save</button>
+                <button class="btn btn-default" type="button" >Cancel</button> <!-- (click)="cancel()" -->
+            </div>
+        </form>
+    </div>
+</div>

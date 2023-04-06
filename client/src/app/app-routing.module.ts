@@ -7,8 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { AuthGuard } from './_gaurds/auth.guard';
+import { PreventUnsavedChangesGuard } from './_gaurds/prevent-unsaved-changes.guard';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -17,6 +19,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {path: "users", component: UserListComponent},
+      {path: "user/edit", component: UserEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},
       {path: "users/:username", component: UserDetailComponent},
       {path: "lists", component: ListsComponent},
       {path: "messages", component: MessagesComponent},

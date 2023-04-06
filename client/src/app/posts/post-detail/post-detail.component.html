@@ -1,0 +1,6 @@
+<div class="container" *ngIf="post">
+  <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+  <div class="lower-post">
+    {{post.caption}}
+  </div>
+</div>

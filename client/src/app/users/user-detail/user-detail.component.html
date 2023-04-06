@@ -1,26 +1,20 @@
 <div class="container" *ngIf="member">
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-md-5">
-      <img src="{{member.profilePicUrl}}" alt="{{member.displayName}}" class="img-thumbnail">
+      <div class="image" style="background-image: url({{member.profilePicUrl}})">
+        <!-- <img src="{{member.profilePicUrl || './assets/user.png'}}" alt="{{member.displayName}}" class="img img-responsive full-width"> -->
+      </div>
     </div>
-    <div class="col mt-4">
+    <div class="col ">
       <div>
         <strong>Bio:</strong>
         <p class="bio-text">{{member.bio}}</p>
       </div>
     </div>
   </div>
-    <div class="row mb-5 posts-container" *ngFor="let post of member.posts">
-      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
-      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
-      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
-      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
-      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
-      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
-      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
-      <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="col-sm-3 card">
+  <hr>
 
-
-
+    <div class="row mb-5 posts-container">
+      <app-post-square [member]="member" [post]="post" class="col-sm-4" *ngFor="let post of member.posts" style="padding: 0;"></app-post-square>
     </div>
 </div>

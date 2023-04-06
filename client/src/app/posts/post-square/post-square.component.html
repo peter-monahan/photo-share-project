@@ -1,0 +1,8 @@
+<ng-container *ngIf="post">
+    <div class="image" style="background-image: url({{post.photos[0].url}})" (click)="showPost('post-' + post.id)">
+        <!-- <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="img img-responsive full-width" (click)="showPost('post-' + post.id)"> -->
+    </div>
+    <app-modal id="post-{{post.id}}">
+        <app-post-detail [post]="post" [member]="member"></app-post-detail>
+    </app-modal>
+</ng-container>

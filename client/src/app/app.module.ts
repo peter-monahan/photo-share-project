@@ -18,6 +18,12 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { UserCardComponent } from './users/user-card/user-card.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { PostCardComponent } from './posts/post-card/post-card.component';
+import { PostDetailComponent } from './posts/post-detail/post-detail.component';
+import { PostSquareComponent } from './posts/post-square/post-square.component';
+import { ModalModule } from './_modal';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { UserEditComponent } from './users/user-edit/user-edit.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -34,13 +40,19 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
     NotFoundComponent,
     ServerErrorComponent,
     UserCardComponent,
+    PostCardComponent,
+    PostDetailComponent,
+    PostSquareComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    ModalModule
     // ToastrModule.forRoot()
   ],
   providers: [
