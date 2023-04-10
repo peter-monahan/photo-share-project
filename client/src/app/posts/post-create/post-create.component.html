@@ -1,0 +1,103 @@
+<div class="row justify-content-center create-container" *ngIf="(accountService.currentUser$ | async) as user">
+  <div class="col-8">
+      <div class="alert alert-info text-center" *ngIf="createForm.dirty"><p>Any data will be lost on leaving page or refreshing.</p></div>
+      <form #createForm="ngForm" id="createForm"  autocomplete="off" (ngSubmit)="createPost()" >
+          <h2 class="text-center text-primary">Create Post</h2>
+          <hr>
+          <div class="mb-3">
+              <h5 class="mt-2">Caption</h5>
+              <textarea
+                  class="form-control"
+                  name="caption"
+                  [(ngModel)]="model.caption"
+                  placeholder="Caption"
+                  rows="6"
+                  ></textarea>
+          </div>
+          <h3>Add Photos</h3>
+  <div class="row" *ngIf="uploader">
+
+        <div class="col-md-3">
+
+            <!-- <h3>Add Photos</h3> -->
+
+            <div ng2FileDrop
+                 [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                 (fileOver)="fileOverBase($event)"
+                 [uploader]="uploader"
+                 class="card bg-faded p-3 text-center mb-3 my-drop-zone">
+                 <i class="fa fa-upload fa-2x"></i>
+                Drop photos here
+            </div>
+            <!-- Multiple -->
+            <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
+
+            <!-- Single
+            <input type="file" ng2FileSelect [uploader]="uploader" /> -->
+        </div>
+
+        <div class="col-md-9" style="margin-bottom: 40px" *ngIf="uploader?.queue?.length">
+
+            <h3>Queue</h3>
+            <p>Queue length: {{ uploader.queue.length }}</p>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="50%">Name</th>
+                    <th>Size</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of uploader.queue">
+                    <td><strong>{{ item?.file?.name }}</strong></td>
+                    <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div>
+                <div>
+                    Queue progress:
+                    <div class="progress" >
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success btn-s"
+                        (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                    <span class="fa fa-upload"></span> Upload all
+                </button>
+                <button type="button" class="btn btn-warning btn-s"
+                        (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                    <span class="fa fa-ban"></span> Cancel all
+                </button>
+                <button type="button" class="btn btn-danger btn-s"
+                        (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                    <span class="fa fa-trash"></span> Remove all
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="photo-list">
+        <div class="card mb-4 post-card col-sm-7" *ngFor="let photo of model.photos">
+            <!-- <div class="image" style="background-image: url({{post.photos[0].url}})"> -->
+              <img src="{{photo.url}}" alt="User uploaded image" class="img img-responsive full-width post-card-image">
+            <!-- </div> -->
+            <!-- <div class="card-body p-3">
+              <h6 class="card-title mb-1">
+                {{post.caption}}
+              </h6>
+            </div> -->
+        </div>
+
+    </div>
+          <div class="text-center">
+              <button [disabled]="!createForm.dirty" class="btn btn-success me-2" type="submit">Create</button>
+              <!-- <button class="btn btn-default" type="button" >Cancel</button> (click)="cancel()" -->
+          </div>
+      </form>
+  </div>
+</div>

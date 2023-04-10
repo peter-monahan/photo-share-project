@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Member } from '../_models/member';
 import { User } from '../_models/user';
 
 @Injectable({
@@ -13,6 +14,7 @@ export class AccountService {
 
   private currentUserSource = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSource.asObservable();
+  fullUser: Member | undefined;
 
   constructor(private http: HttpClient) { }
 
@@ -20,8 +22,7 @@ export class AccountService {
     return this.http.post<User>(this.baseUrl + "account/register", model).pipe(
       map(user => {
         if(user) {
-          localStorage.setItem("user", JSON.stringify(user));
-          this.currentUserSource.next(user);
+          this.setCurrentUser(user);
         }
       })
     )
@@ -32,8 +33,7 @@ export class AccountService {
         map((response: User) => {
             const user = response;
             if(user) {
-                localStorage.setItem("user", JSON.stringify(user));
-                this.currentUserSource.next(user);
+              this.setCurrentUser(user);
             }
         })
     )
@@ -45,6 +45,17 @@ export class AccountService {
   }
 
   setCurrentUser(user: User) {
+    localStorage.setItem("user", JSON.stringify(user));
     this.currentUserSource.next(user);
+  }
+
+  getFullUser() {
+    return this.http.get<Member>(this.baseUrl + "users/current").pipe(
+      map(user => {
+        if(user) {
+          this.fullUser = user;
+        }
+      })
+    )
   }
 }

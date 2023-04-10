@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Member } from 'src/app/_models/member';
+import { MembersService } from 'src/app/_services/members.service';
 
 @Component({
   selector: 'app-user-card',
@@ -8,10 +9,16 @@ import { Member } from 'src/app/_models/member';
 })
 export class UserCardComponent implements OnInit {
   @Input() member: Member | undefined;
-  
-  constructor() { }
+
+  constructor(private memberService: MembersService) { }
 
   ngOnInit(): void {
   }
 
+  followUser() {
+    if(!this.member) return;
+    this.memberService.followMember(this.member?.id).subscribe({
+      next: () => console.log("success")
+    })
+  }
 }

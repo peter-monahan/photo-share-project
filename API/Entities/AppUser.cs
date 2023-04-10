@@ -15,6 +15,7 @@ namespace API.Entities
         public string ProfilePicUrl { get; set; } = "./assets/user.png";
         public string PublicId { get; set; }
         public List<Post> Posts { get; set; } = new();
+        public List<Photo> Photos { get; set; } = new();
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
         public HashSet<AppUser> IsFollowedBy { get; set; } = new();

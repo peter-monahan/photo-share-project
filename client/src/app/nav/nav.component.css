@@ -27,7 +27,8 @@
     padding-bottom: 7px;
 
     position: fixed;
-    margin-top: 16px;
+    margin-top: 10px;
+    right: 10px;
     background-color: white;
     border: 1px solid lightgray;
     border-radius: 7px;
@@ -36,4 +37,20 @@
 
 .dropdown-button {
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
+
+.user-image {
+    display: inline-block;
+    height: 35px;
+    width: 35px !important;
+    object-fit:cover;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    border-radius: 50%;
+    /* margin-right: 10px;
+    margin-left: 10px; */
+    border: 1px solid rgba(0, 0, 0, 0.175);
+  }

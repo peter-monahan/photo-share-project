@@ -1,10 +1,11 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ModalService } from './modal.service';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  styleUrls: ['./modal.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ModalComponent implements OnInit {
   @Input() id: string | undefined;
@@ -19,7 +20,7 @@ export class ModalComponent implements OnInit {
       console.error("Modal must have an id");
       return;
     }
-    this._element.style.display = "none";
+    // this._element.style.display = "none";
     document.body.appendChild(this._element);
     this._element.addEventListener("click", (e: any) => {
       if(e.target.className === "app-modal") {
@@ -31,6 +32,7 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
+    document.body.classList.remove("app-modal-open");
     if(this.id) {
       this.modalService.remove(this.id);
     }

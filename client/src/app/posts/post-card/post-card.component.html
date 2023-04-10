@@ -1,1 +1,16 @@
-<p>post-card works!</p>
+<div class="card mb-4 post-card" *ngIf="post">
+  <div class="card-top mt-2 card-title">
+    <div class="user-image" style="background-image: url({{post.appUser.profilePicUrl}})" routerLink="/users/{{post.appUser.userName}}"></div> <strong class="clickable" routerLink="/users/{{post.appUser.userName}}">{{post.appUser.userName}}</strong>
+  </div>
+  <!-- <div class="image" style="background-image: url({{post.photos[0].url}})"> -->
+    <img src="{{post.photos[0].url}}" alt="{{post.caption}}" class="img img-responsive full-width post-card-image" (click)="showPost('post-' + post.id)">
+  <!-- </div> -->
+  <div class="card-body p-3 clickable" (click)="showPost('post-' + post.id)">
+    <p class="card-title mb-1">
+      <strong>{{post.appUser.userName}}</strong> {{post.caption}}
+    </p>
+  </div>
+  <app-modal id="post-{{post.id}}">
+    <app-post-detail [post]="post"></app-post-detail>
+  </app-modal>
+</div>

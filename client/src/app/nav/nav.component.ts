@@ -13,12 +13,18 @@ export class NavComponent implements OnInit {
 
   model: any = {};
   showDropdown = false;
-
   constructor(public accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  click() {
+    const func = () => {
+      if(this.showDropdown) this.showDropdown = false;
+      document.removeEventListener("click", func)
+    }
+    return func
+  }
 
   login() {
     this.accountService.login(this.model).subscribe({
@@ -32,11 +38,11 @@ export class NavComponent implements OnInit {
     this.router.navigateByUrl("/");
   }
 
-  toggleDropDown() {
-    this.showDropdown = !this.showDropdown;
-
-    if(this.showDropdown) {
-
+  toggleDropDown($event: MouseEvent) {
+    if(!this.showDropdown) {
+      $event.stopImmediatePropagation()
+      this.showDropdown = true;
+      document.addEventListener("click", this.click())
     }
   }
 }

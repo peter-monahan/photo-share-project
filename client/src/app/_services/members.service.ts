@@ -13,10 +13,17 @@ export class MembersService {
 
   constructor(private http: HttpClient) { }
 
+  // getStaticMembers() {
+
+  // }
+
+  // getStaticMember() {
+
+  // }
   getMembers() {
-    if (this.members.length > 0) return of(this.members);
+    // if (this.members.length > 0) return of(this.members);
     return this.http.get<Member[]>(this.baseUrl + "users").pipe(
-      map(members =>{
+      map(members => {
         this.members = members;
         return members;
       })
@@ -24,8 +31,10 @@ export class MembersService {
   }
 
   getMember(username: string) {
-    const member = this.members.find(x => x.userName === username);
-    if (member) return of(member);
+    // const member = this.members.find(x => x.userName === username);
+    // if (member) {
+    //   return of(member);
+    // }
     return this.http.get<Member>(this.baseUrl + "users/" + username);
   }
 
@@ -36,5 +45,13 @@ export class MembersService {
         this.members[index] = {...this.members[index], ...member}
       })
     )
+  }
+
+  followMember(userId: number) {
+    return this.http.post(this.baseUrl + "users/follow/" + userId, {});
+  }
+
+  unfollowMember(userId: number) {
+    return this.http.delete(this.baseUrl + "users/follow/" + userId, {});
   }
 }

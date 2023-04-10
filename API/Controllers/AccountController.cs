@@ -1,11 +1,10 @@
-
-
 using System.Security.Cryptography;
 using System.Text;
 using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,12 +15,12 @@ namespace API.Controllers
 
         private readonly DataContext _context;
         private readonly ITokenService _tokenService;
-
-        public AccountController(DataContext context, ITokenService tokenService)
+        private readonly IMapper _mapper;
+        public AccountController(DataContext context, ITokenService tokenService, IMapper mapper)
         {
-      _tokenService = tokenService;
+            _tokenService = tokenService;
             _context = context;
-
+            _mapper = mapper;
         }
 
         [HttpPost("register")]// POST api/account/register
@@ -33,6 +32,7 @@ namespace API.Controllers
 
            var user = new AppUser
            {
+            DisplayName = registerDto.Username,
             UserName = registerDto.Username.ToLower(),
             PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
             PaswordSalt = hmac.Key
@@ -43,7 +43,8 @@ namespace API.Controllers
            return new UserDto
            {
             Username = user.UserName,
-            Token = _tokenService.CreateToken(user)
+            Token = _tokenService.CreateToken(user),
+            ProfilePicUrl = user.ProfilePicUrl
            };
         }
 
@@ -63,11 +64,9 @@ namespace API.Controllers
                 if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password");
             }
 
-           return new UserDto
-           {
-            Username = user.UserName,
-            Token = _tokenService.CreateToken(user)
-           };
+           var returnUser = _mapper.Map<UserDto>(user);
+           returnUser.Token = _tokenService.CreateToken(user);
+           return returnUser;
         }
 
         private async Task<bool> UserExists(string username)

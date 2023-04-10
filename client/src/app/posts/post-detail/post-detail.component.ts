@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
+import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryImageSize, NgxGalleryOptions } from '@kolkov/ngx-gallery';
 import { Member } from 'src/app/_models/member';
 import { Post } from 'src/app/_models/post';
 
@@ -22,13 +22,53 @@ export class PostDetailComponent implements OnInit {
 
     this.galleryOptions = [
       {
-        width: "500px",
-        height: "632px",
+        width: "700px",
+        height: "877px",
         imagePercent: 100,
         thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide,
-        preview: false
-      }
+        preview: false,
+        imageSize: NgxGalleryImageSize.Contain,
+        imageArrowsAutoHide: true
+      },
+      {
+        breakpoint: 990,
+        width: '600px',
+        height: '740px',
+        imagePercent: 80,
+        thumbnailsPercent: 20,
+        thumbnailsMargin: 20,
+        thumbnailMargin: 20,
+      },
+      {
+        breakpoint: 767,
+        width: '400px',
+        height: '528px',
+        imagePercent: 80,
+        thumbnailsPercent: 20,
+        thumbnailsMargin: 20,
+        thumbnailMargin: 20
+      },
+      {
+        breakpoint: 576,
+        width: '300px',
+        height: '428px',
+        imagePercent: 80,
+        thumbnailsPercent: 20,
+        thumbnailsMargin: 20,
+        thumbnailMargin: 20,
+
+      },
+      {
+        breakpoint: 320,
+        width: '250px',
+        height: '378px',
+        imagePercent: 80,
+        thumbnailsPercent: 20,
+        thumbnailsMargin: 20,
+        thumbnailMargin: 20,
+
+      },
     ]
 
     this.galleryImages = this.getImages();
@@ -36,10 +76,8 @@ export class PostDetailComponent implements OnInit {
 
   getImages() {
     if(!this.post) {
-      console.log("sdfjhsdfa",this.post)
       return [];
     };
-    console.log("sdfjhsdfa", this.post)
     const imageUrls = [];
     for (const photo of this.post.photos) {
       imageUrls.push({
@@ -48,7 +86,6 @@ export class PostDetailComponent implements OnInit {
         big: photo.url
       })
     }
-    console.log(imageUrls)
     return imageUrls;
   }
 

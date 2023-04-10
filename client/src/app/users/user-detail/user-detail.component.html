@@ -1,11 +1,14 @@
-<div class="container" *ngIf="member">
+<div class="container" *ngIf="member" >
   <div class="row mt-3">
     <div class="col-md-5">
       <div class="image" style="background-image: url({{member.profilePicUrl}})">
         <!-- <img src="{{member.profilePicUrl || './assets/user.png'}}" alt="{{member.displayName}}" class="img img-responsive full-width"> -->
       </div>
     </div>
-    <div class="col ">
+    <div class="col mt-3">
+      <div class="mb-4 title-follow" *ngIf="(accountService.currentUser$ | async) as user">
+        <h3>{{member.displayName}} </h3><button [disabled]="disableButtons" class="btn btn-primary follow-btn" (click)="followUser()" *ngIf="!following">Follow</button><button [disabled]="disableButtons" class="btn btn-primary follow-btn" (click)="unfollowUser()" *ngIf="following">Unfollow</button>
+      </div>
       <div>
         <strong>Bio:</strong>
         <p class="bio-text">{{member.bio}}</p>

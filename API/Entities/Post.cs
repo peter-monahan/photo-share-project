@@ -6,7 +6,6 @@ namespace API.Entities
     public List<Photo> Photos { get; set; } = new();
     public string Caption { get; set; }
     // public List<Like> Likes { get; set; } = new();
-    public string PublicId { get; set; }
     public int AppUserId { get; set; }
     public AppUser AppUser { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

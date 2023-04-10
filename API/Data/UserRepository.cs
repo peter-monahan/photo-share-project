@@ -45,6 +45,12 @@ namespace API.Data
                       .ThenInclude(post => post.Photos)
                       .SingleOrDefaultAsync(x => x.UserName == username);
     }
+        public async Task<AppUser> GetUserByUsernameWithFollowingAsync(string username)
+    {
+      return await _context.Users
+                      .Include(u => u.IsFollowing)
+                      .SingleOrDefaultAsync(x => x.UserName == username);
+    }
 
     public async Task<IEnumerable<AppUser>> GetUsersAsync()
     {

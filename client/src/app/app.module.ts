@@ -24,6 +24,9 @@ import { PostSquareComponent } from './posts/post-square/post-square.component';
 import { ModalModule } from './_modal';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { FeedComponent } from './feed/feed.component';
+import { PostCreateComponent } from './posts/post-create/post-create.component';
+import { FileUploadModule } from 'ng2-file-upload';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -44,6 +47,8 @@ import { UserEditComponent } from './users/user-edit/user-edit.component';
     PostDetailComponent,
     PostSquareComponent,
     UserEditComponent,
+    FeedComponent,
+    PostCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,8 @@ import { UserEditComponent } from './users/user-edit/user-edit.component';
     HttpClientModule,
     FormsModule,
     NgxGalleryModule,
-    ModalModule
+    ModalModule,
+    FileUploadModule,
     // ToastrModule.forRoot()
   ],
   providers: [

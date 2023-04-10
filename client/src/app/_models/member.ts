@@ -8,6 +8,7 @@ export interface Member {
   profilePicUrl: string
   publicId: any
   posts: Post[]
+  isFollowing: []
   createdAt: string
   updatedAt: string
 }

@@ -1,6 +1,6 @@
-/* app-modal {
+app-modal {
   display: none;
-} */
+}
 
 .app-modal {
   position: fixed;
@@ -18,9 +18,9 @@
 }
 
 .app-modal-body {
-  padding: 5%;
-  background-color: white;
-  margin: 10%;
+  padding: 3%;
+  background-color: rgb(247, 247, 247);
+  /* margin: 10%; */
   border-radius: 20px;
   box-shadow: 7px 7px 3px rgba(0, 0, 0, 0.301);
   width: min-content;
