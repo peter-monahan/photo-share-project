@@ -12,9 +12,10 @@ import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { AuthGuard } from './_gaurds/auth.guard';
 import { PreventUnsavedChangesGuard } from './_gaurds/prevent-unsaved-changes.guard';
+import { LoggedInGuard } from './_gaurds/logged-in.guard';
 
 const routes: Routes = [
-  {path: "", component: HomeComponent},
+  {path: "", component: HomeComponent, canActivate: [LoggedInGuard]},
   {path: "",
   runGuardsAndResolvers: "always",
     canActivate: [AuthGuard],

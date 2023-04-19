@@ -28,8 +28,14 @@ export class NavComponent implements OnInit {
 
   login() {
     this.accountService.login(this.model).subscribe({
-        next: () => this.router.navigateByUrl("/users")
+        next: () => this.router.navigateByUrl("/feed")
     })
+  }
+
+  demoLogin() {
+      this.model.username = "demouser";
+      this.model.password = "Pa$$w0rd";
+      this.login();
   }
 
 

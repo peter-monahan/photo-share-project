@@ -23,7 +23,7 @@ namespace API.Data
         return await _context.Posts
                 .Where(p => user.IsFollowing.Contains(p.AppUser) )
                 .OrderByDescending(p => p.Id)
-                .Take(10)
+                // .Take(10)
                 .ProjectTo<SinglePostDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
     }
@@ -42,7 +42,7 @@ namespace API.Data
         return await _context.Posts
                 .ProjectTo<SinglePostDto>(_mapper.ConfigurationProvider)
                 .OrderByDescending(p => p.Id)
-                .Take(10)
+                .Take(count)
                 .ToListAsync();
     }
 
