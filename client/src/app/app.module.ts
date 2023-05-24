@@ -27,7 +27,79 @@ import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { FeedComponent } from './feed/feed.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import {
+  IPublicClientApplication,
+  PublicClientApplication,
+  BrowserCacheLocation,
+  LogLevel,
+  InteractionType,
+} from '@azure/msal-browser';
+import {
+  MSAL_INSTANCE,
+  MSAL_INTERCEPTOR_CONFIG,
+  MsalInterceptorConfiguration,
+  MSAL_GUARD_CONFIG,
+  MsalGuardConfiguration,
+  MsalBroadcastService,
+  MsalService,
+  MsalGuard,
+  MsalRedirectComponent,
+  MsalModule,
+  MsalInterceptor,
+} from '@azure/msal-angular';
+import { LoginComponent } from './login/login.component';
 // import { ToastrModule } from 'ngx-toastr';
+
+
+const GRAPH_ENDPOINT = 'https://graph.microsoft.com/v1.0/me';
+
+const isIE =
+  window.navigator.userAgent.indexOf('MSIE ') > -1 ||
+  window.navigator.userAgent.indexOf('Trident/') > -1;
+
+export function loggerCallback(logLevel: LogLevel, message: string) {
+  console.log(message);
+}
+
+export function MSALInstanceFactory(): IPublicClientApplication {
+  return new PublicClientApplication({
+    auth: {
+      clientId: '1e49d8e2-ea75-47c6-9967-80a22425bfbc',
+      authority: 'https://login.microsoftonline.com/common',
+      redirectUri: 'https://localhost:4200/',
+    },
+    cache: {
+      cacheLocation: BrowserCacheLocation.LocalStorage,
+      storeAuthStateInCookie: isIE, // set to true for IE 11
+    },
+    system: {
+      loggerOptions: {
+        loggerCallback,
+        logLevel: LogLevel.Info,
+        piiLoggingEnabled: false,
+      },
+    },
+  });
+}
+
+export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
+  const protectedResourceMap = new Map<string, Array<string>>();
+  protectedResourceMap.set(GRAPH_ENDPOINT, ['user.read']);
+
+  return {
+    interactionType: InteractionType.Redirect,
+    protectedResourceMap,
+  };
+}
+
+export function MSALGuardConfigFactory(): MsalGuardConfiguration {
+  return {
+    interactionType: InteractionType.Redirect,
+    authRequest: {
+      scopes: ['user.read'],
+    },
+  };
+}
 
 @NgModule({
   declarations: [
@@ -49,6 +121,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     UserEditComponent,
     FeedComponent,
     PostCreateComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,13 +132,57 @@ import { FileUploadModule } from 'ng2-file-upload';
     NgxGalleryModule,
     ModalModule,
     FileUploadModule,
+    MsalModule,
+    MsalModule.forRoot(
+      new PublicClientApplication({
+        auth: {
+          clientId: "1e49d8e2-ea75-47c6-9967-80a22425bfbc",
+        },
+        cache: {
+          cacheLocation: "localStorage",
+          storeAuthStateInCookie: isIE,
+        },
+      }),
+      {
+        interactionType: InteractionType.Redirect,
+        authRequest: {
+          scopes: ["user.read"],
+        },
+      },
+      {
+        interactionType: InteractionType.Redirect,
+        protectedResourceMap: new Map([
+          ["https://graph.microsoft.com/v1.0/me", ["user.read"]],
+        ]),
+      }
+    ),
     // ToastrModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+      {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true,
+    },
+    {
+      provide: MSAL_INSTANCE,
+      useFactory: MSALInstanceFactory,
+    },
+    {
+      provide: MSAL_GUARD_CONFIG,
+      useFactory: MSALGuardConfigFactory,
+    },
+    {
+      provide: MSAL_INTERCEPTOR_CONFIG,
+      useFactory: MSALInterceptorConfigFactory,
+    },
+    MsalService,
+    MsalGuard,
+    MsalBroadcastService,
 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, MsalRedirectComponent]
 })
 export class AppModule { }

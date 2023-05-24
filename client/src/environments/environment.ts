@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://localhost:5001/api/"
+  apiUrl: "https://localhost:5001/api/",
+  scopeUri: ["api://8d93fc86-f994-4a4e-a36d-3d7b34b3b1ad/readaccess"],
+  tenantId: "ae661cf5-688a-4c89-bd74-ec2bd340d941",
+  
 };
 
 /*

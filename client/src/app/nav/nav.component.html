@@ -33,7 +33,7 @@
                 </div>
             </div>
             <form #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off" *ngIf="!(accountService.currentUser$ | async)">
-                <input
+                <!-- <input
                     name="username"
                     [(ngModel)]="model.username"
                     class="form-control me-2"
@@ -44,9 +44,11 @@
                     [(ngModel)]="model.password"
                     class="form-control me-2"
                     type="Password"
-                    placeholder="Password" >
-                <button class="btn btn-primary" type="submit">Login</button>
-                <button class="btn btn-primary ms-2" type="button" (click)="demoLogin()">Demo</button>
+                    placeholder="Password" > -->
+                <button class="btn btn-primary" routerLink="/login" routerLinkActive="active" type="button">Login</button>
+                <!-- <button class="btn btn-primary" type="button" *ngIf="!loginDisplay" (click)="msLogin()">Login w/ Microsoft</button> -->
+                <!-- <button class="btn btn-primary" type="button" *ngIf="loginDisplay" (click)="msLogout()">MsLogout</button> -->
+                <!-- <button class="btn btn-primary ms-2" type="button" (click)="demoLogin()">Demo</button> -->
 
             </form>
         </div>

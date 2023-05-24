@@ -1,0 +1,25 @@
+<div class="row justify-content-center">
+  <div class="col-4 row justify-content-center">
+
+    <form #registerForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+      <h2 class="text-center text-primary">Log in</h2>
+      <hr>
+      <div class="mb-3">
+        <input type="text" name="username" class="form-control mb-3" [(ngModel)]="model.username"
+          placeholder="Username">
+        <div class="mb-3">
+          <input type="password" class="form-control mb-3" name="password" [(ngModel)]="model.password"
+            placeholder="Password">
+        </div>
+        <div class="text-center">
+          <button class="btn btn-success me-2" type="submit">Log in</button>
+          <!-- <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button> -->
+        </div>
+      </div>
+    </form>
+    <h3 class="text-center text-primary">Or</h3>
+    <hr>
+    <button class="btn btn-primary mb-3"  (click)="msLogin()" type="button" >Log in with Microsoft</button>
+    <button class="btn btn-primary" (click)="demoLogin()" type="button">Log in as Demo User</button>
+  </div>
+</div>
