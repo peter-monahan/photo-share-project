@@ -27,6 +27,7 @@ import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { FeedComponent } from './feed/feed.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { environment } from 'src/environments/environment';
 import {
   IPublicClientApplication,
   PublicClientApplication,
@@ -66,7 +67,7 @@ export function MSALInstanceFactory(): IPublicClientApplication {
     auth: {
       clientId: '1e49d8e2-ea75-47c6-9967-80a22425bfbc',
       authority: 'https://login.microsoftonline.com/common',
-      redirectUri: 'https://localhost:4200/',
+      redirectUri: environment.redirectURI,
     },
     cache: {
       cacheLocation: BrowserCacheLocation.LocalStorage,

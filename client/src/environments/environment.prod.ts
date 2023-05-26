@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: "api/"
+  apiUrl: "api/",
+  redirectURI: "https://vistagram.azurewebsites.net/"
 };
