@@ -58,6 +58,9 @@ namespace API.Controllers
             var user = await _context.Users.FirstOrDefaultAsync(user => user.UserName == loginDto.Username);
 
             if (user == null) return Unauthorized("Invalid username");
+            if (loginDto.Password == null) return Unauthorized("Must provide a password");
+            if (user.PasswordHash == null) return Unauthorized("This user does not have a password and must be logged in using Microsoft login");
+
 
             using var hmac = new HMACSHA512(user.PaswordSalt);
 
@@ -84,6 +87,7 @@ namespace API.Controllers
             var info = JsonSerializer.Deserialize<MsUserInfoDto>(infoString);
 
             var username = info.userPrincipalName;
+            if(username == null) return BadRequest("Was unable to verify username from msGraph");
             try
             {
                 var emailAddress = new MailAddress(username);
@@ -112,6 +116,8 @@ namespace API.Controllers
                     // PaswordSalt = new byte[1],
                     // PublicId = "1234"
                 };
+
+                if (await UserExists(username)) return BadRequest("Username is taken");
 
                 _context.Users.Add(newUser);
                 await _context.SaveChangesAsync();

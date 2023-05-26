@@ -1,11 +1,14 @@
 
 using API.Exstensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Entities
 {
+  [Index(nameof(UserName), IsUnique = true)]
   public class AppUser
     {
         public int Id { get; set; }
+
         public string UserName { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PaswordSalt { get; set; }

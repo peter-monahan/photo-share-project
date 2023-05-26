@@ -72,6 +72,8 @@ export class NavComponent implements OnInit {
       )
       .subscribe(() => {
         this.setLoginDisplay();
+        console.log(this.authService.instance.getTokenCache());
+
       });
 
   }

@@ -34,7 +34,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 break;
               }
             case 401:
-              alert(`Unathorised, ${error.status}`);
+              alert(`Unathorised, ${error.error}. Status: ${error.status}`);
               break;
             case 404:
               this.router.navigateByUrl('/not-found');
