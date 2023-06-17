@@ -4,12 +4,14 @@
     "IsSeedUser": true,
     "DateOfBirth": "1993-04-18",
     "DisplayName": "Madison",
-    "CreatedAt": "2020-06-12",
+    "CreatedAt": "2018-06-12",
     "UpdatedAt": "2020-08-17",
     "Bio": "Labore proident voluptate do non. Ullamco pariatur Lorem proident minim sunt. Ut ex irure ipsum pariatur anim consectetur. Culpa irure duis exercitation magna nisi voluptate exercitation. Sunt veniam esse fugiat in commodo minim fugiat laborum ad dolor ut quis est minim. Ea proident reprehenderit eiusmod dolore est eu dolor laboris labore eu.\r\n",
     "ProfilePicUrl": "./assets/seed-images/seed57.jpg",
     "Posts": [
       {
+        "CreatedAt": "2020-06-12",
+        "UpdatedAt": "2020-06-12",
         "Caption": "Reprehenderit velit ea ea laborum reprehenderit commodo tempor est officia minim aliqua aute aliquip aliqua.",
         "Photos": [
           {
@@ -19,6 +21,8 @@
         ]
       },
       {
+        "CreatedAt": "2020-06-13",
+        "UpdatedAt": "2020-06-13",
         "Caption": "Reprehenderit velit ea ea laborum reprehenderit commodo tempor est officia minim aliqua aute aliquip aliqua.",
         "Photos": [
           {
@@ -40,6 +44,8 @@
         ]
       },
       {
+        "CreatedAt": "2020-09-12",
+        "UpdatedAt": "2020-09-12",
         "Caption": "Reprehenderit velit ea ea laborum reprehenderit commodo tempor est officia minim aliqua aute aliquip aliqua.",
         "Photos": [
           {
@@ -53,6 +59,8 @@
         ]
       },
       {
+        "CreatedAt": "2020-10-12",
+        "UpdatedAt": "2020-10-12",
         "Caption": "Reprehenderit velit ea ea laborum reprehenderit commodo tempor est officia minim aliqua aute aliquip aliqua.",
         "Photos": [
           {
@@ -68,12 +76,14 @@
     "IsSeedUser": true,
     "DateOfBirth": "1986-05-02",
     "DisplayName": "August",
-    "CreatedAt": "2019-05-29",
+    "CreatedAt": "2018-05-29",
     "UpdatedAt": "2020-06-09",
     "Bio": "Ullamco ex pariatur et exercitation non ad. Laboris aute id cupidatat id aliqua ullamco et consequat excepteur elit officia occaecat consequat est. Voluptate ad et in qui nisi occaecat laboris Lorem. In non eiusmod adipisicing reprehenderit laborum laboris cillum occaecat in ipsum mollit tempor.\r\n",
     "ProfilePicUrl": "./assets/seed-images/seed49.jpg",
     "Posts": [
       {
+        "CreatedAt": "2020-07-12",
+        "UpdatedAt": "2020-07-12",
         "Caption": "Tempor dolor ea amet labore do elit cillum laboris laborum eu magna.",
         "Photos": [
           {
@@ -83,6 +93,8 @@
         ]
       },
       {
+        "CreatedAt": "2020-08-12",
+        "UpdatedAt": "2020-08-12",
         "Caption": "Tempor dolor ea amet labore do elit cillum laboris laborum eu magna.",
         "Photos": [
           {
@@ -104,6 +116,8 @@
     "ProfilePicUrl": "./assets/seed-images/seed51.jpg",
     "Posts": [
       {
+        "CreatedAt": "2020-06-19",
+        "UpdatedAt": "2020-06-19",
         "Caption": "Mollit exercitation sint sit dolor labore dolor dolor incididunt incididunt sunt.",
         "Photos": [
           {
@@ -133,6 +147,8 @@
     "ProfilePicUrl": "./assets/seed-images/seed60.JPG",
     "Posts": [
       {
+        "CreatedAt": "2020-06-17",
+        "UpdatedAt": "2020-06-17",
         "Caption": "Veniam elit consectetur cillum fugiat.",
         "Photos": [
           {
@@ -142,6 +158,8 @@
         ]
       },
       {
+        "CreatedAt": "2020-07-17",
+        "UpdatedAt": "2020-07-17",
         "Caption": "Veniam elit consectetur cillum fugiat.",
         "Photos": [
           {
@@ -151,6 +169,8 @@
         ]
       },
       {
+        "CreatedAt": "2020-05-12",
+        "UpdatedAt": "2020-05-12",
         "Caption": "Veniam elit consectetur cillum fugiat.",
         "Photos": [
           {
@@ -160,6 +180,8 @@
         ]
       },
       {
+        "CreatedAt": "2020-09-19",
+        "UpdatedAt": "2020-09-19",
         "Caption": "Veniam elit consectetur cillum fugiat.",
         "Photos": [
           {
@@ -169,6 +191,8 @@
         ]
       },
       {
+        "CreatedAt": "2020-05-18",
+        "UpdatedAt": "2020-05-18",
         "Caption": "Veniam elit consectetur cillum fugiat.",
         "Photos": [
           {
@@ -178,6 +202,8 @@
         ]
       },
       {
+        "CreatedAt": "2020-08-18",
+        "UpdatedAt": "2020-08-18",
         "Caption": "Veniam elit consectetur cillum fugiat.",
         "Photos": [
           {
@@ -187,6 +213,8 @@
         ]
       },
       {
+        "CreatedAt": "2020-08-17",
+        "UpdatedAt": "2020-08-17",
         "Caption": "Veniam elit consectetur cillum fugiat.",
         "Photos": [
           {
@@ -196,6 +224,8 @@
         ]
       },
       {
+        "CreatedAt": "2021-06-12",
+        "UpdatedAt": "2021-06-12",
         "Caption": "Veniam elit consectetur cillum fugiat.",
         "Photos": [
           {
@@ -217,6 +247,8 @@
     "ProfilePicUrl": "./assets/seed-images/seed34.JPG",
     "Posts": [
       {
+        "CreatedAt": "2020-12-12",
+        "UpdatedAt": "2020-12-12",
         "Caption": "Elit est est pariatur commodo occaecat duis amet nisi culpa ut nostrud nostrud consequat.",
         "Photos": [
           {
@@ -238,6 +270,8 @@
     "ProfilePicUrl": "./assets/seed-images/seed67.jpg",
     "Posts": [
       {
+        "CreatedAt": "2021-08-12",
+        "UpdatedAt": "2021-08-12",
         "Caption": "Magna id et mollit quis nulla nisi dolor est.",
         "Photos": [
           {
@@ -259,6 +293,8 @@
     "ProfilePicUrl": "./assets/seed-images/seed34.jpeg",
     "Posts": [
       {
+        "CreatedAt": "2020-05-14",
+        "UpdatedAt": "2020-05-14",
         "Caption": "Cillum duis aliqua pariatur consequat commodo ea aliquip ullamco sunt quis sunt.",
         "Photos": [
           {
@@ -280,6 +316,8 @@
     "ProfilePicUrl": "./assets/seed-images/seed64.JPG",
     "Posts": [
       {
+        "CreatedAt": "2020-04-12",
+        "UpdatedAt": "2020-04-12",
         "Caption": "Lorem aliquip et in ipsum ut dolor aliquip nisi incididunt eiusmod.",
         "Photos": [
           {
@@ -309,6 +347,8 @@
         ]
       },
       {
+        "CreatedAt": "2020-11-12",
+        "UpdatedAt": "2020-11-12",
         "Caption": "Lorem aut dolor aliquip nisi incididunt eiusmod.",
         "Photos": [
           {
@@ -338,6 +378,8 @@
         ]
       },
       {
+        "CreatedAt": "2020-11-11",
+        "UpdatedAt": "2020-11-11",
         "Caption": "aliquip et in ipsum ut dolor aliquip nisi incididunt eiusmod.",
         "Photos": [
           {
@@ -373,12 +415,14 @@
     "IsSeedUser": true,
     "DateOfBirth": "1965-01-14",
     "DisplayName": "Nichols",
-    "CreatedAt": "2020-04-20",
+    "CreatedAt": "2012-04-20",
     "UpdatedAt": "2020-05-25",
     "Bio": "Adipisicing enim ut aliqua commodo aliquip irure. Veniam exercitation nulla deserunt est velit aute laborum duis ullamco aliqua nulla ut adipisicing do. Labore nulla Lorem duis ipsum. Tempor labore cillum sunt laboris ad ea anim id occaecat labore non.\r\n",
     "ProfilePicUrl": "./assets/seed-images/seed58.JPG",
     "Posts": [
       {
+        "CreatedAt": "2020-01-12",
+        "UpdatedAt": "2020-01-12",
         "Caption": "Incididunt anim nulla deserunt est Lorem qui.",
         "Photos": [
           {
@@ -400,6 +444,8 @@
     "ProfilePicUrl": "./assets/user.png",
     "Posts": [
       {
+        "CreatedAt": "2020-02-12",
+        "UpdatedAt": "2020-02-12",
         "Caption": "Tempor dolor ea amet labore do elit cillum laboris laborum eu magna.",
         "Photos": [
           {
@@ -409,6 +455,8 @@
         ]
       },
       {
+        "CreatedAt": "2020-03-12",
+        "UpdatedAt": "2020-03-12",
         "Caption": "Tempor dolor ea amet labore do elit cillum laboris laborum eu magna.",
         "Photos": [
           {

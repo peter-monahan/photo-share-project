@@ -22,7 +22,7 @@ namespace API.Data
     {
         return await _context.Posts
                 .Where(p => user.IsFollowing.Contains(p.AppUser) )
-                .OrderByDescending(p => p.Id)
+                .OrderByDescending(p => p.CreatedAt)
                 // .Take(10)
                 .ProjectTo<SinglePostDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();

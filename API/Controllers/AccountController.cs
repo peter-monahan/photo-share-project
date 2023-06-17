@@ -98,7 +98,7 @@ namespace API.Controllers
                 username = string.Concat(username.Where(c => Char.IsLetterOrDigit(c) || c == '-'));
             }
 
-            var user = await _context.Users.FirstOrDefaultAsync(user => user.UserName == username);
+            var user = await _context.Users.FirstOrDefaultAsync(user => user.UserName == username.ToLower());
             // Console.WriteLine(msLoginDto.Token);
             Console.WriteLine(username);
             if (user != null) {

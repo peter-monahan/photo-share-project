@@ -28,7 +28,11 @@ namespace API.Data
                 user.UpdatedAt = DateTime.SpecifyKind(user.UpdatedAt, DateTimeKind.Utc );
                 user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("Pa$$w0rd"));
                 user.PaswordSalt = hmac.Key;
-
+                foreach (var post in user.Posts)
+                {
+                    post.CreatedAt = DateTime.SpecifyKind(post.CreatedAt, DateTimeKind.Utc );
+                    post.UpdatedAt = DateTime.SpecifyKind(post.UpdatedAt, DateTimeKind.Utc );
+                }
                 context.Users.Add(user);
             }
 

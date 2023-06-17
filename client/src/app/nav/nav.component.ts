@@ -71,7 +71,7 @@ export class NavComponent implements OnInit {
         takeUntil(this._destroying$)
       )
       .subscribe(() => {
-        this.setLoginDisplay();
+        // this.setLoginDisplay();
         console.log(this.authService.instance.getTokenCache());
 
       });
