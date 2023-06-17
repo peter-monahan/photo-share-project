@@ -1,5 +1,8 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, Inject, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MSAL_GUARD_CONFIG, MsalGuardConfiguration, MsalService } from '@azure/msal-angular';
+import { InteractionType } from '@azure/msal-browser';
 import { take } from 'rxjs';
 import { Member } from 'src/app/_models/member';
 import { User } from 'src/app/_models/user';
@@ -21,7 +24,13 @@ export class UserEditComponent implements OnInit {
   member: Member | undefined;
   user: User | null = null;
 
-  constructor(private accountService: AccountService, private membersService: MembersService) {
+  constructor(
+    private accountService: AccountService,
+    private membersService: MembersService,
+    private router: Router,
+    @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
+    private authService: MsalService,
+    ) {
     this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: user => this.user = user
     })
@@ -42,10 +51,40 @@ export class UserEditComponent implements OnInit {
     this.membersService.updateMember(this.editForm?.value).subscribe({
       next: () => {
         console.log(this.member);
-        alert("Profile successfully updated");
+        alert("Profile successfully updated.");
         this.editForm?.reset(this.member);
       }
     })
 
+  }
+
+  deleteUser() {
+    if(confirm("Are you sure you want to delete your account?")) {
+      this.membersService.deleteMember().subscribe({
+        next: () => {
+          alert("Profile successfully deleted.");
+          this.logout()
+        }
+      })
+    }
+  }
+
+  logout() {
+    this.accountService.logout();
+    if(this.authService.instance.getAllAccounts().length > 0) this.msLogout();
+    this.router.navigateByUrl("/");
+  }
+
+  msLogout() {
+    if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
+      this.authService.logoutPopup({
+        postLogoutRedirectUri: "/",
+        mainWindowRedirectUri: "/"
+      });
+    } else {
+      this.authService.logoutRedirect({
+        postLogoutRedirectUri: "/",
+      });
+    }
   }
 }

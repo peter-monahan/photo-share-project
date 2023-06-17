@@ -8,7 +8,7 @@ namespace API.Entities
   public class AppUser
     {
         public int Id { get; set; }
-
+        public bool IsSeedUser { get; set; } = false;
         public string UserName { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PaswordSalt { get; set; }

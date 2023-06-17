@@ -54,4 +54,8 @@ export class MembersService {
   unfollowMember(userId: number) {
     return this.http.delete(this.baseUrl + "users/follow/" + userId, {});
   }
+
+  deleteMember() {
+    return this.http.delete(this.baseUrl + "users");
+  }
 }

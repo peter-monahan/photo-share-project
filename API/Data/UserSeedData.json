@@ -1,10 +1,11 @@
 [
   {
     "UserName": "Madison",
+    "IsSeedUser": true,
     "DateOfBirth": "1993-04-18",
     "DisplayName": "Madison",
     "CreatedAt": "2020-06-12",
-    "UpdatedAt": "2020-05-17",
+    "UpdatedAt": "2020-08-17",
     "Bio": "Labore proident voluptate do non. Ullamco pariatur Lorem proident minim sunt. Ut ex irure ipsum pariatur anim consectetur. Culpa irure duis exercitation magna nisi voluptate exercitation. Sunt veniam esse fugiat in commodo minim fugiat laborum ad dolor ut quis est minim. Ea proident reprehenderit eiusmod dolore est eu dolor laboris labore eu.\r\n",
     "ProfilePicUrl": "./assets/seed-images/seed57.jpg",
     "Posts": [
@@ -64,6 +65,7 @@
   },
   {
     "UserName": "August",
+    "IsSeedUser": true,
     "DateOfBirth": "1986-05-02",
     "DisplayName": "August",
     "CreatedAt": "2019-05-29",
@@ -93,6 +95,7 @@
   },
   {
     "UserName": "Christian",
+    "IsSeedUser": true,
     "DateOfBirth": "1982-06-05",
     "DisplayName": "Christian",
     "CreatedAt": "2019-06-22",
@@ -121,6 +124,7 @@
   },
   {
     "UserName": "Joseph",
+    "IsSeedUser": true,
     "DateOfBirth": "1966-10-14",
     "DisplayName": "Joseph",
     "CreatedAt": "2019-04-27",
@@ -204,6 +208,7 @@
   },
   {
     "UserName": "Guad",
+    "IsSeedUser": true,
     "DateOfBirth": "1977-03-05",
     "DisplayName": "Guad",
     "CreatedAt": "2019-09-21",
@@ -224,6 +229,7 @@
   },
   {
     "UserName": "Griffin",
+    "IsSeedUser": true,
     "DateOfBirth": "1987-07-21",
     "DisplayName": "Griffin",
     "CreatedAt": "2019-07-04",
@@ -244,6 +250,7 @@
   },
   {
     "UserName": "NewGuy",
+    "IsSeedUser": true,
     "DateOfBirth": "1978-11-07",
     "DisplayName": "NewGuy",
     "CreatedAt": "2019-07-08",
@@ -264,6 +271,7 @@
   },
   {
     "UserName": "Blaze",
+    "IsSeedUser": true,
     "DateOfBirth": "1985-08-04",
     "DisplayName": "Blaze",
     "CreatedAt": "2019-03-14",
@@ -362,6 +370,7 @@
   },
   {
     "UserName": "Nichols",
+    "IsSeedUser": true,
     "DateOfBirth": "1965-01-14",
     "DisplayName": "Nichols",
     "CreatedAt": "2020-04-20",
@@ -382,6 +391,7 @@
   },
   {
     "UserName": "DemoUser",
+    "IsSeedUser": true,
     "DateOfBirth": "1986-05-02",
     "DisplayName": "DemoUser",
     "CreatedAt": "2019-05-29",
