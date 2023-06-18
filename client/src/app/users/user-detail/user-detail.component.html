@@ -10,7 +10,7 @@
         <h3>{{member.displayName}} </h3><button [disabled]="disableButtons" class="btn btn-primary follow-btn" (click)="followUser()" *ngIf="!following">Follow</button><button [disabled]="disableButtons" class="btn btn-primary follow-btn" (click)="unfollowUser()" *ngIf="following">Unfollow</button>
       </div>
       <div>
-        <strong>Bio:</strong>
+        <!-- <strong>Bio:</strong> -->
         <p class="bio-text">{{member.bio}}</p>
       </div>
     </div>
