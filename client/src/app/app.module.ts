@@ -49,6 +49,7 @@ import {
   MsalInterceptor,
 } from '@azure/msal-angular';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 
@@ -123,6 +124,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     FeedComponent,
     PostCreateComponent,
     LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
