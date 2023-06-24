@@ -1,14 +1,14 @@
 <div class="row justify-content-center">
-  <div class="col-4 row justify-content-center">
+  <div class="col-sm-6 row justify-content-center">
 
-    <form #registerForm="ngForm" (ngSubmit)="login()" autocomplete="off">
-      <h2 class="text-center text-primary">Log in</h2>
+    <form class="justify-content-center" #registerForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+      <h2 class="text-center text-primary mt-3">Log in</h2>
       <hr>
-      <div class="mb-3">
-        <input type="text" name="username" class="form-control mb-3" [(ngModel)]="model.username"
+      <div class="mb-3 text-center less-wide">
+        <input type="text" name="username" class="form-control mb-3 less-wide" [(ngModel)]="model.username"
           placeholder="Username">
-        <div class="mb-3">
-          <input type="password" class="form-control mb-3" name="password" [(ngModel)]="model.password"
+        <div class="mb-3 less-wide">
+          <input type="password" class="form-control mb-3 less-wide" name="password" [(ngModel)]="model.password"
             placeholder="Password">
         </div>
         <div class="text-center">
@@ -19,7 +19,14 @@
     </form>
     <h3 class="text-center text-primary">Or</h3>
     <hr>
-    <button class="btn btn-primary mb-3"  (click)="msLogin()" type="button" >Log in with Microsoft</button>
-    <button class="btn btn-primary" (click)="demoLogin()" type="button">Log in as Demo User</button>
+    <div class="text-center mb-3">
+      <div class="mb-2">
+        <button class="btn btn-primary minor-button"  (click)="msLogin()" type="button" >Log in with Microsoft</button>
+      </div>
+      <div class="mb-2">
+        <button class="btn btn-primary minor-button" (click)="demoLogin()" type="button">Log in as Demo User</button>
+      </div>
+    </div>
+    <h6 class="text-center text-primary">Don't have an account? <a routerLink="/" href="">Sign up</a></h6>
   </div>
 </div>

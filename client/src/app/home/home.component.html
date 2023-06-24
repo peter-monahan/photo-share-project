@@ -4,18 +4,18 @@
     <p class="lead">Share anything, discover everything!</p>
 </div> -->
 <div class="container row mt-3 justify-content-around">
+
+    <div class="card col-lg-5 justify-content-center mb-3" >
+        <!-- <div class="card-top"></div> -->
+        <app-register (cancelRegister)="cancelRegister($event)"></app-register>
+        <!-- <div class="card-bottom"></div> -->
+
+    </div>
     <div class="card col-lg-5 mb-3 home-container" >
                 <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
 
             <!-- <button class="btn btn-primary btn-lg me-2" (click)="registerToggle()">Sign up</button> -->
             <!-- <button class="btn btn-primary btn-lg btn-info">Learn more</button> -->
-
-    </div>
-
-    <div class="card col-lg-5 justify-content-center mb-3" >
-                <!-- <div class="card-top"></div> -->
-                <app-register (cancelRegister)="cancelRegister($event)"></app-register>
-                <!-- <div class="card-bottom"></div> -->
 
     </div>
 </div>
