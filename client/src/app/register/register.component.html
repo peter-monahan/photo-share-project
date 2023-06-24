@@ -1,40 +1,44 @@
 <div class="card-body">
     <div class="justify-content-center">
-<form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
-    <h2 class="text-center text-primary">Sign up</h2>
-    <hr>
-    <div class="mb-3">
-        <input
-            type="text"
-            name="username"
-            class="form-control mb-3"
-            [(ngModel)]="model.username"
-            placeholder="Username"
-        >
-        <div class="mb-3">
-            <input
-                type="password"
-                class="form-control mb-3"
-                name="password"
-                [(ngModel)]="model.password"
-                placeholder="Password"
-                >
-        </div>
-        <div class="text-center">
-            <button class="btn btn-success me-2" type="submit">Register</button>
-            <!-- <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button> -->
-        </div>
-        <h3 class="text-center text-primary">Or</h3>
+        <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
+            <div class="title home-container text-center ">
+                <h1 class="brand-title">Vistagram</h1>
+                <p class="lead">Share anything, discover everything!</p>
+            </div>
             <hr>
-            <div class="text-center">
-                <div class="mb-1">
-                    <button class="btn btn-primary"  (click)="msLogin()" type="button" >Sign up with Microsoft</button>
+            <h2 class="text-center text-primary">Sign up</h2>
+            <hr>
+            <div class="mb-3">
+                <input type="text" name="username" class="form-control mb-3" [(ngModel)]="model.username"
+                    placeholder="Username">
+                <div class="mb-3">
+                    <input type="password" class="form-control mb-3" name="password" [(ngModel)]="model.password"
+                        placeholder="Password">
                 </div>
-                <div class="mb-1">
-                    <button class="btn btn-primary" (click)="demoLogin()" type="button">Log in as Demo User</button>
+                <div class="text-center">
+                    <button class="btn btn-success me-2" type="submit">Register</button>
+                    <!-- <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button> -->
                 </div>
-        </div>
+                <h3 class="text-center text-primary">Or</h3>
+                <hr>
+                <div class="text-center mb-4">
+                    <div class="mb-1">
+                        <button class="btn btn-primary minor-button" (click)="msLogin()" type="button">Sign up with
+                            Microsoft</button>
+                    </div>
+                    <div class="mb-1">
+                        <button class="btn btn-primary minor-button" (click)="demoLogin()" type="button">Log in as Demo User</button>
+                    </div>
+                </div>
+                <h6 class="text-center text-primary">Already have an account? <a routerLink="/login" href="">Login</a></h6>
+                <!-- <hr> -->
+                <div class="text-center">
+                    <div >
+                        <!-- <button class="btn btn-primary minor-button" routerLink="/login" type="button">Log in</button> -->
+                    </div>
+                </div>
+
+            </div>
+        </form>
     </div>
-</form>
-</div>
 </div>
