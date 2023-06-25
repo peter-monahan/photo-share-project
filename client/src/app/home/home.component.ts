@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.galleryOptions = [
       {
-        width: "530px",
+        width: '100%',
         height: "795px",
         imagePercent: 100,
         // thumbnailsColumns: 4,
@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
       },
       {
         breakpoint: 1399,
-        width: '455px',
+        width: '100%',
         height: '685px',
         imagePercent: 80,
         thumbnailsPercent: 20,
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
       },
       {
         breakpoint: 1199,
-        width: '380px',
+        width: '100%',
         height: '575px',
         imagePercent: 80,
         thumbnailsPercent: 20,
@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit {
       },
       {
         breakpoint: 991,
-        width: '672px',
+        width: '100%',
         height: '1025px',
         imagePercent: 80,
         thumbnailsPercent: 20,
