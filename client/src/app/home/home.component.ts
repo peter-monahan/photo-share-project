@@ -106,7 +106,7 @@ export class HomeComponent implements OnInit {
 
   getImages() {
     const returnUrls = [];
-    const imageUrls = ["./assets/seed-images/seed57.jpg", "./assets/seed-images/seed59.jpg", "./assets/seed-images/seed30.jpeg", "./assets/seed-images/seed67.jpg", "./assets/seed-images/seed45.JPG", "./assets/seed-images/seed38.JPG",];
+    const imageUrls = ["./assets/seed-images/seed57.jpg", "./assets/seed-images/seed38.JPG", "./assets/seed-images/seed59.jpg", "./assets/seed-images/seed30.jpeg", "./assets/seed-images/seed67.jpg", "./assets/seed-images/seed45.JPG", ];
     for (const url of imageUrls) {
       returnUrls.push({
         small: url,
