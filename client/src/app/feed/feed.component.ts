@@ -11,6 +11,7 @@ import { PostsService } from '../_services/posts.service';
 })
 export class FeedComponent implements OnInit {
   posts: SinglePost[] = this.postService.posts;
+  loaded: boolean = false;
   constructor(private postService: PostsService) { }
 
   ngOnInit(): void {
@@ -24,8 +25,8 @@ export class FeedComponent implements OnInit {
   loadPosts() {
     this.postService.getFollowedPosts().subscribe({
       next: posts => {
-        this.posts = posts
-        console.log(posts);
+        this.posts = posts;
+        this.loaded = true;
       }
     })
   }

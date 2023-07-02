@@ -3,6 +3,6 @@
   <button class="btn btn-primary mx-1 my-3">My Feed</button> -->
   <div class="feed-container container">
     <app-post-card class="col-sm-7" *ngFor="let post of posts" [post]="post"></app-post-card>
-    <div *ngIf="!posts.length">Looks like you aren't following anyone with posts. Go <a class="link" routerLink="/users">here</a> to fix that.</div>
+    <div *ngIf="!posts.length && loaded">Looks like you aren't following anyone with posts. Go <a class="link" routerLink="/users">here</a> to fix that.</div>
   </div>
 </div>
