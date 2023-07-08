@@ -3,11 +3,13 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MSAL_GUARD_CONFIG, MsalGuardConfiguration, MsalService } from '@azure/msal-angular';
 import { InteractionType } from '@azure/msal-browser';
+import { FileUploader } from 'ng2-file-upload';
 import { take } from 'rxjs';
 import { Member } from 'src/app/_models/member';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-edit',
@@ -21,6 +23,15 @@ export class UserEditComponent implements OnInit {
       $event.returnValue = true;
     }
   }
+
+  model: any = {
+    photos: [],
+  };
+  uploader: FileUploader | undefined;
+  showUploader = false;
+  hasBaseDropZoneOver = false;
+  baseUrl = environment.apiUrl;
+
   member: Member | undefined;
   user: User | null = null;
 
@@ -34,10 +45,15 @@ export class UserEditComponent implements OnInit {
     this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: user => this.user = user
     })
+
+
   }
 
   ngOnInit(): void {
-    this.loadMember()
+    this.loadMember();
+    this.initializeUploader();
+    this.loadPhotos();
+    console.log(this.model);
   }
 
   loadMember() {
@@ -45,6 +61,12 @@ export class UserEditComponent implements OnInit {
     this.membersService.getMember(this.user.username).subscribe({
       next: member => this.member = member
     })
+  }
+
+  loadPhotos() {
+    this.membersService.getMemberPhotos().subscribe({
+      next: photos => this.model.photos = photos
+    });
   }
 
   saveEdit() {
@@ -86,5 +108,42 @@ export class UserEditComponent implements OnInit {
         postLogoutRedirectUri: "/",
       });
     }
+  }
+
+  fileOverBase(e: any) {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  initializeUploader() {
+    this.uploader = new FileUploader({
+      url: this.baseUrl + "users/profile-photo",
+      authToken: "Bearer " + this.user?.token,
+      isHTML5: true,
+      allowedFileType: ["image"],
+      removeAfterUpload: true,
+      autoUpload: false,
+      maxFileSize: 10 * 1024 * 1024,
+      queueLimit: 2
+    });
+
+    this.uploader.onWhenAddingFileFailed = (item, filter, options) => {
+      alert("File must be an image under 10MB");
+      console.log("Hi");
+    }
+
+    this.uploader.onAfterAddingFile = (file) => {
+      file.withCredentials = false;
+      if(this.uploader && this.uploader.queue.length > 1) {
+        this.uploader?.removeFromQueue(this.uploader.queue[0]);
+      }
+    }
+
+    this.uploader.onSuccessItem = (item, response, status, headers) => {
+      this.showUploader = false;
+    }
+  }
+
+  toggleShowUploader() {
+    this.showUploader = !this.showUploader;
   }
 }

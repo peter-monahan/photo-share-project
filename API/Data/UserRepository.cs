@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
@@ -45,6 +47,12 @@ namespace API.Data
                       .ThenInclude(post => post.Photos)
                       .SingleOrDefaultAsync(x => x.UserName == username);
     }
+    public async Task<AppUser> GetUserByUsernameWithPhotosAsync(string username)
+    {
+      return await _context.Users
+                      .Include(p => p.Photos)
+                      .SingleOrDefaultAsync(x => x.UserName == username);
+    }
         public async Task<AppUser> GetUserByUsernameWithFollowingAsync(string username)
     {
       return await _context.Users
@@ -56,6 +64,7 @@ namespace API.Data
     {
       return await _context.Users.Include(p => p.Posts).ThenInclude(post => post.Photos).ToListAsync();
     }
+
 
     public async Task<bool> SaveAllAsync()
     {

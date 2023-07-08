@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Reflection;
 using System.Security.Claims;
 using API.Data;
 using API.DTOs;
@@ -5,6 +8,7 @@ using API.Entities;
 using API.Exstensions;
 using API.Interfaces;
 using AutoMapper;
+using Internal;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -82,6 +86,29 @@ namespace API.Controllers
             return BadRequest("Failed to update user");
         }
 
+        [HttpGet("photos")]
+        public async Task<ActionResult<IEnumerable<PhotoDto>>> GetPhotos()
+        {
+            var user = await _userRepository.GetUserByUsernameWithPhotosAsync(User.GetUsername());
+
+            if (user == null) return NotFound();
+
+            var photos = new List<PhotoDto>();
+
+            foreach (var photo in user.Photos)
+            {
+                var photoDto = new PhotoDto
+                {
+                    Id = photo.Id,
+                    Url = photo.Url
+                };
+
+                photos.Add(photoDto);
+            }
+
+            return Ok(photos);
+        }
+
         [HttpPost("photos")]
         public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
         {
@@ -106,6 +133,51 @@ namespace API.Controllers
             }
 
             return BadRequest("Problem adding photo");
+        }
+
+        [HttpPost("profile-photo")]
+        public async Task<ActionResult<PhotoDto>> ChangeProfilePhoto(IFormFile file)
+        {
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+
+            if (user == null) return NotFound();
+            if (user.IsSeedUser == null) return BadRequest("You cannot change a seeded users profile photo");
+
+            //Upload photo to cloudinary
+            var uploadResult = await _photoService.AddPhotoAsync(file);
+            if (uploadResult.Error != null) return BadRequest(uploadResult.Error.Message);
+
+// --------------------------------------
+            if (user.PublicId != null)
+            {
+                var deleteResult = await _photoService.DeletePhotoAsync(user.PublicId);
+                if(deleteResult.Error != null)
+                {
+                Console.WriteLine("ERORR: Was unable to delete former profile photo for user:");
+                Console.Write(user.UserName);
+                }
+            }
+
+
+            // if(await _userRepository.SaveAllAsync()) return Ok();
+
+
+//-------------------------------------------------
+
+            // var photo = new Photo
+            // {
+            //     Url = result.SecureUrl.AbsoluteUri,
+            //     PublicId = result.PublicId
+            // };
+
+            user.ProfilePicUrl = uploadResult.SecureUrl.AbsoluteUri;
+            user.PublicId = uploadResult.PublicId;
+
+            if (await _userRepository.SaveAllAsync()) {
+                return Ok();
+            }
+
+            return BadRequest("Problem changing profile photo");
         }
 
         [HttpDelete("photos/{photoId}")]

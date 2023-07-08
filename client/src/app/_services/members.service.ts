@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Member } from '../_models/member';
+import { Photo } from '../_models/photo';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { Member } from '../_models/member';
 export class MembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
+  photos: Photo[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -36,6 +38,15 @@ export class MembersService {
     //   return of(member);
     // }
     return this.http.get<Member>(this.baseUrl + "users/" + username);
+  }
+
+  getMemberPhotos() {
+    return this.http.get<Photo[]>(this.baseUrl + "users/photos").pipe(
+      map((photos) => {
+        this.photos = photos;
+        return photos
+      })
+    );
   }
 
   updateMember(member: Member) {

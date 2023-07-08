@@ -450,7 +450,7 @@
         "Photos": [
           {
             "Url": "./assets/seed-images/seed50.jpg",
-            "AppUserId": 2
+            "AppUserId": 9
           }
         ]
       },
@@ -461,7 +461,7 @@
         "Photos": [
           {
             "Url": "./assets/seed-images/seed52.jpg",
-            "AppUserId": 2
+            "AppUserId": 9
           }
         ]
       }
