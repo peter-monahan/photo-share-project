@@ -139,6 +139,7 @@ export class UserEditComponent implements OnInit {
     }
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
+     
       this.showUploader = false;
     }
   }
