@@ -2,6 +2,15 @@
   font-size: 15px;
 }
 
+.or-div {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.inner-or-div {
+  width: 40%;
+}
 /* .less-wide {
   max-width: 350px;
   margin-right: 0px;

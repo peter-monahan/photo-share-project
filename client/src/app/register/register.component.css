@@ -1,3 +1,13 @@
 .minor-button {
   font-size: 14px;
 }
+
+.or-div {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.inner-or-div {
+  width: 40%;
+}

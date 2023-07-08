@@ -15,7 +15,7 @@
                 >
             </div>
             <div *ngIf="!showUploader" class="mb-3">
-                <button type="button" (click)="toggleShowUploader()">Change Profile Photo</button>
+                <button type="button" class="btn btn-primary" (click)="toggleShowUploader()">Change Profile Photo</button>
             </div>
             <div *ngIf="showUploader" class="mb-3">
                 <!-- <h5 class="mt-2">Profile Image</h5>
@@ -89,9 +89,9 @@
                                           <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
                                       </div>
                                   </div> -->
-                                  <button type="button" class="btn btn-success btn-s"
+                                  <button type="button" class="btn btn-success btn-s me-2"
                                           (click)="uploader.uploadAll()" *ngIf="uploader.queue.length">
-                                      <span class="fa fa-upload"></span> Save
+                                      <span class="fa fa-upload"></span> Save Photo
                                   </button>
                                   <!-- <button type="button" class="btn btn-warning btn-s"
                                           (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
