@@ -127,7 +127,6 @@ namespace API.Controllers
             };
 
             user.Photos.Add(photo);
-
             if (await _userRepository.SaveAllAsync()) {
                 return CreatedAtAction(nameof(GetUser), new {username = user.UserName}, _mapper.Map<PhotoDto>(photo));
             }
@@ -136,12 +135,12 @@ namespace API.Controllers
         }
 
         [HttpPost("profile-photo")]
-        public async Task<ActionResult<PhotoDto>> ChangeProfilePhoto(IFormFile file)
+        public async Task<ActionResult<FlatMemberDto>> ChangeProfilePhoto(IFormFile file)
         {
             var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
 
             if (user == null) return NotFound();
-            if (user.IsSeedUser == null) return BadRequest("You cannot change a seeded users profile photo");
+            if (user.IsSeedUser == true) return BadRequest("You cannot change a seeded users profile photo");
 
             //Upload photo to cloudinary
             var uploadResult = await _photoService.AddPhotoAsync(file);
@@ -174,7 +173,7 @@ namespace API.Controllers
             user.PublicId = uploadResult.PublicId;
 
             if (await _userRepository.SaveAllAsync()) {
-                return Ok();
+                return _mapper.Map<FlatMemberDto>(user);
             }
 
             return BadRequest("Problem changing profile photo");
